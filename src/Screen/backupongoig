@@ -1,0 +1,236 @@
+import React, { useState, useRef } from 'react'
+import { View, SafeAreaView, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import cmstyle from '../Styles/commanstyle';
+import styles from '../Styles/styles';
+import Header from '../components/Header';
+import RBSheet from "react-native-raw-bottom-sheet";
+import ImagePicker from 'react-native-image-crop-picker';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+
+const windowWidth = Dimensions.get('window').width;
+const OngoingList = () => {
+
+
+    const navigation = useNavigation();
+    const submitbtn = () => {
+        navigation.navigate('Ongoingworks', {
+            name: "DURING EXCAVATION"
+        });
+    }
+
+    const submitbtn12 = () => {
+
+        navigation.navigate('VideoList');
+    }
+    const submitbtn1 = () => {
+
+        navigation.navigate('Ongoingworks', {
+            name: "COMPACTCTION ON EARTH"
+        });
+    }
+    const submitbtn2 = () => {
+
+        navigation.navigate('Ongoingworks', {
+            name: "EXCVATION DEPTH"
+        });
+    }
+    const submitbtn3 = () => {
+
+        navigation.navigate('Ongoingworks', {
+            name: "WMM LAYING"
+        });
+    }
+
+    const submitbtn4 = () => {
+
+        navigation.navigate('Ongoingworks', {
+            name: "WMM COMPACTION"
+        });
+    }
+    return (
+        <SafeAreaView style={[cmstyle.flex_1]}>
+            <StatusBar backgroundColor="#FA9A5B" barStyle="dark-content" />
+            <Header CheckList name="On Going" btnname="SUBMIT" btna={submitbtn12} />
+            <ScrollView>
+                <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox2]} onPress={submitbtn} activeOpacity={0.9}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/task.png')} height={26} style={{
+                                    width: windowWidth - 67,
+                                    height: 152,
+                                    borderRadius: 9,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                    <View style={{ width: 60, height: 60, borderWidth: 1, position: 'absolute', right: 7, top: 50, borderRadius: 15, borderColor: '#008018', backgroundColor: '#ffff', alignItems: 'center', justifyContent: 'center' }}>
+                        <AntDesign
+                            name="checkcircleo"
+                            size={38}
+                            color="#008018"
+                            style={styles.menuIcon}
+                        />
+                    </View>
+                </View>
+                <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox2]} activeOpacity={0.9} onPress={submitbtn1}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/task1.png')} height={26} style={{
+                                    width: windowWidth - 67,
+                                    height: 152,
+                                    borderRadius: 9,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                    <View style={{ width: 60, height: 60, borderWidth: 1, position: 'absolute', right: 7, top: 50, borderRadius: 15, borderColor: '#008018', backgroundColor: '#ffff', alignItems: 'center', justifyContent: 'center' }}>
+                        <AntDesign
+                            name="checkcircleo"
+                            size={38}
+                            color="#008018"
+                            style={styles.menuIcon}
+                        />
+                    </View>
+                </View>
+                <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox2]} activeOpacity={0.9} onPress={submitbtn2}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/task2.png')} height={26} style={{
+                                    width: windowWidth - 67,
+                                    height: 152,
+                                    borderRadius: 9,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                    <View style={{ width: 60, height: 60, borderWidth: 1, position: 'absolute', right: 7, top: 50, borderRadius: 15, borderColor: '#008018', backgroundColor: '#ffff', alignItems: 'center', justifyContent: 'center' }}>
+                        <AntDesign
+                            name="checkcircleo"
+                            size={38}
+                            color="#008018"
+                            style={styles.menuIcon}
+                        />
+                    </View>
+
+                </View>
+                <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.yellowborder]} activeOpacity={0.9} onPress={submitbtn3}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/task3.png')} height={26} style={{
+                                    width: windowWidth - 67,
+                                    height: 152,
+                                    borderRadius: 9,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                    <View style={{ width: 60, height: 60, borderWidth: 1, position: 'absolute', right: 7, top: 50, borderRadius: 15, borderColor: '#FFA368', backgroundColor: '#ffff', alignItems: 'center', justifyContent: 'center' }}>
+                        <Ionicons
+                            name="time-outline"
+                            size={38}
+                            color="#FFA368"
+                            style={styles.menuIcon}
+                        />
+                    </View>
+
+                </View>
+                <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.yellowborder]} activeOpacity={0.9} onPress={submitbtn4}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/task4.png')} height={26} style={{
+                                    width: windowWidth - 67,
+                                    height: 152,
+                                    borderRadius: 9,
+                                    // marginLeft:10,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View>
+                        </TouchableOpacity>
+
+
+                    </View>
+
+
+                    <View style={{ width: 60, height: 60, borderWidth: 1, position: 'absolute', right: 7, top: 50, borderRadius: 15, borderColor: '#FFA368', backgroundColor: '#ffff', alignItems: 'center', justifyContent: 'center' }}>
+                        <Ionicons
+                            name="time-outline"
+                            size={38}
+                            color="#FFA368"
+                            style={styles.menuIcon}
+                        />
+                    </View>
+
+                </View>
+                <View style={{ padding: 20 }}></View>
+
+            </ScrollView>
+        </SafeAreaView>
+
+    )
+}
+
+const style = StyleSheet.create({
+
+    maincontainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FA9A5B',
+    },
+    logo: {
+        width: 160,
+        height: 160,
+        borderRadius: 100,
+        // borderWidth: 7,
+        borderColor: '#707070',
+        backgroundColor: '#eee',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 30
+    }
+})
+
+
+export default OngoingList;

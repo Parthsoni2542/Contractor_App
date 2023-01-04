@@ -1,0 +1,533 @@
+import React, { useState, useRef ,useEffect} from 'react'
+import { View, SafeAreaView, Text, StyleSheet, StatusBar, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
+import cmstyle from '../Styles/commanstyle';
+import styles from '../Styles/styles';
+import Header from '../components/Header';
+import RBSheet from "react-native-raw-bottom-sheet";
+import ImagePicker from 'react-native-image-crop-picker';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
+import { Checklist } from '../Redux/Actions/checklist';
+
+const windowWidth = Dimensions.get('window').width;
+
+
+const CheckList = () => {
+    const navigation = useNavigation();
+    const refRBSheet = useRef();
+    const refRBSheet1 = useRef();
+    const refRBSheet2 = useRef();
+    const refRBSheet3 = useRef();
+    const dispatch = useDispatch();
+
+    const state = useSelector(state => state.checklist)
+    console.log("statestatestate",state.checklistdata)
+    const [image, setimg] = useState([])
+    const [imagecamera, SetImages] = useState("")
+    const [imagecamera1, SetImages1] = useState("")
+    const [imagecamera2, SetImages2] = useState("")
+    const [imagecamera3, SetImages3] = useState("")
+
+
+    useEffect(() => {
+        dispatch(Checklist())
+    }, [])
+    
+  
+
+    const imagepick = () => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            // cropping: true
+        }).then(images => {
+            SetImages(images.path)
+            // setimg(images)
+            console.log(images.path)
+            refRBSheet.current.close()
+        });
+    }
+
+
+    const pickMultiple = () => {
+        ImagePicker.openPicker({
+            multiple: true,
+            waitAnimationEnd: false,
+            sortOrder: 'desc',
+            includeExif: true,
+            forceJpg: true,
+        })
+            .then((images) => {
+                // setimg(images)
+                SetImages(images[0].path)
+                console.log("fffffff", images[0].path)
+                // SetImages(images)
+                refRBSheet.current.close()
+
+            })
+            .catch((e) => alert(e));
+    }
+
+    const imagepick1 = () => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            // cropping: true
+        }).then(images => {
+            SetImages1(images.path)
+            // setimg(images)
+            console.log(images.path)
+            refRBSheet1.current.close()
+        });
+    }
+
+
+    const pickMultiple1 = () => {
+        ImagePicker.openPicker({
+            multiple: true,
+            waitAnimationEnd: false,
+            sortOrder: 'desc',
+            includeExif: true,
+            forceJpg: true,
+        })
+            .then((images) => {
+                // setimg(images)
+                SetImages1(images[0].path)
+                console.log("fffffff", images[0].path)
+                // SetImages(images)
+                refRBSheet1.current.close()
+
+            })
+            .catch((e) => alert(e));
+    }
+    const imagepick2 = () => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            // cropping: true
+        }).then(images => {
+            SetImages2(images.path)
+            // setimg(images)
+            console.log(images.path)
+            refRBSheet2.current.close()
+        });
+    }
+
+
+    const pickMultiple2 = () => {
+        ImagePicker.openPicker({
+            multiple: true,
+            waitAnimationEnd: false,
+            sortOrder: 'desc',
+            includeExif: true,
+            forceJpg: true,
+        })
+            .then((images) => {
+                // setimg(images)
+                SetImages2(images[0].path)
+                console.log("fffffff", images[0].path)
+                // SetImages(images)
+                refRBSheet2.current.close()
+
+            })
+            .catch((e) => alert(e));
+    }
+    const imagepick3 = () => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            // cropping: true
+        }).then(images => {
+            SetImages3(images.path)
+            // setimg(images)
+            console.log(images.path)
+            refRBSheet3.current.close()
+        });
+    }
+
+
+    const pickMultiple3 = () => {
+        ImagePicker.openPicker({
+            multiple: true,
+            waitAnimationEnd: false,
+            sortOrder: 'desc',
+            includeExif: true,
+            forceJpg: true,
+        })
+            .then((images) => {
+                // setimg(images)
+                SetImages3(images[0].path)
+                console.log("fffffff", images[0].path)
+                // SetImages(images)
+                refRBSheet3.current.close()
+
+            })
+            .catch((e) => alert(e));
+    }
+    const startbtn = () => {
+        // console.log("ddddd")
+        
+        navigation.navigate('OngoingList');
+    }
+
+
+    const renderlist = () => {
+
+
+
+        if (imagecamera == "") {
+            return (
+                <Image source={require('../Images/checkList.png')} height={26} style={{
+                    width: windowWidth - 52,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+        else {
+            return (
+                <Image source={{
+                    uri: imagecamera
+                }} height={26} style={{
+                    width: windowWidth - 53,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+
+    }
+    const renderlist1 = () => {
+
+
+
+        if (imagecamera1 == "") {
+            return (
+                <Image source={require('../Images/checkList.png')} height={26} style={{
+                    width: windowWidth - 52,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+        else {
+            return (
+                <Image source={{
+                    uri: imagecamera1
+                }} height={26} style={{
+                    width: windowWidth - 53,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+
+    }
+    const renderlist2 = () => {
+
+
+
+        if (imagecamera2 == "") {
+            return (
+                <Image source={require('../Images/checkList.png')} height={26} style={{
+                    width: windowWidth - 52,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+        else {
+            return (
+                <Image source={{
+                    uri: imagecamera2
+                }} height={26} style={{
+                    width: windowWidth - 53,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+
+    }
+    const renderlist3 = () => {
+
+
+
+        if (imagecamera3 == "") {
+            return (
+                <Image source={require('../Images/checkList.png')} height={26} style={{
+                    width: windowWidth - 52,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+        else {
+            return (
+                <Image source={{
+                    uri: imagecamera3
+                }} height={26} style={{
+                    width: windowWidth - 53,
+                    height: 152,
+                    borderRadius: 10,
+                    // marginTop: 11,
+
+                    backgroundColor: '#fbf4e6',
+                }} resizeMode="cover" />
+            )
+        }
+
+    }
+
+
+    const renderColorss = currenTab => (currenTab === imagecamera ? 'red' :'red');
+
+    return (
+        <SafeAreaView style={[cmstyle.flex_1]}>
+            <StatusBar backgroundColor="#FA9A5B" barStyle="dark-content" />
+            <Header CheckList name="Check List" btna={startbtn} btnname="START" color={renderColorss} img={imagecamera} img1={imagecamera1} img2={imagecamera2} img3={imagecamera3}/>
+            <View style={[cmstyle.items_center, cmstyle.justify_center]}>
+                <ScrollView showsVerticalScrollIndicator={false}>
+                {
+                    state.checklistdata ==''? null:state.checklistdata.map((index,i)=>{
+                        console.log(index.sTitle)
+                        return(
+                            <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                            <TouchableOpacity style={[styles.nextvisitbox1]} onPress={() => refRBSheet.current.open()} activeOpacity={0.9}>
+                                <View style={{ alignItems: 'center' }}>
+                              
+                                        {renderlist(index._id,)}
+                               
+                                   
+                                </View>
+                            </TouchableOpacity>
+                            <Text style={[styles.fontMedium, { fontSize: 20, color: '#333F54' }]}>{index.sTitle}</Text>
+                            
+                        </View>
+                        )
+                 
+                })
+            }
+
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox1]} onPress={() => refRBSheet1.current.open()} activeOpacity={0.9}>
+                            {/* {renderlist()} */}
+                            {renderlist1()}
+                        </TouchableOpacity>
+                        <Text style={[styles.fontMedium, { fontSize: 20, color: '#333F54' }]}>BARGATION</Text>
+
+                    </View>
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox1]} onPress={() => refRBSheet2.current.open()} activeOpacity={0.9}>
+                            {renderlist2()}
+                            {/* <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/checkList.png')} height={26} style={{
+                                    width: windowWidth - 52,
+                                    height: 152,
+                                    borderRadius: 10,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View> */}
+                        </TouchableOpacity>
+                        <Text style={[styles.fontMedium, { fontSize: 20, color: '#333F54' }]}>FIRE SAFETY</Text>
+
+                    </View>
+                    <View style={[{ marginTop: 10, alignItems: 'center', justifyContent: 'center' }]}>
+                        <TouchableOpacity style={[styles.nextvisitbox1]} onPress={() => refRBSheet3.current.open()} activeOpacity={0.9}>
+                            {renderlist3()}
+                            {/* <View style={{ alignItems: 'center' }}>
+                                <Image source={require('../Images/checkList.png')} height={26} style={{
+                                    width: windowWidth - 52,
+                                    height: 152,
+                                    borderRadius: 10,
+                                    // marginTop: 11,
+
+                                    backgroundColor: '#fbf4e6',
+                                }} resizeMode="cover" />
+                            </View> */}
+                        </TouchableOpacity>
+                        <Text style={[styles.fontMedium, { fontSize: 20, color: '#333F54' }]}>COMPACTOR CHECK</Text>
+
+                    </View>
+
+                    <View style={{ padding: 30 }}></View>
+                </ScrollView>
+            </View>
+            <RBSheet
+                ref={refRBSheet}
+                closeOnDragDown={true}
+                height={180}
+                closeOnPressMask={true}
+                customStyles={{
+                    wrapper: {
+
+                        backgroundColor: "transparent",
+                    },
+                    draggableIcon: {
+                        backgroundColor: "#FA9A5B",
+
+                    }
+                }}
+            >
+                <View style={styles.container}>
+                    <View style={{ alignItems: 'center' }}>
+
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={imagepick}   >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Take Picture</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={pickMultiple}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Choice Here</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </RBSheet>
+            <RBSheet
+                ref={refRBSheet1}
+                closeOnDragDown={true}
+                height={180}
+                closeOnPressMask={true}
+                customStyles={{
+                    wrapper: {
+
+                        backgroundColor: "transparent",
+                    },
+                    draggableIcon: {
+                        backgroundColor: "#FA9A5B",
+
+                    }
+                }}
+            >
+                <View style={styles.container}>
+                    <View style={{ alignItems: 'center' }}>
+
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={imagepick1}   >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Take Picture</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={pickMultiple1}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Choice Here</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </RBSheet>
+            <RBSheet
+                ref={refRBSheet2}
+                closeOnDragDown={true}
+                height={180}
+                closeOnPressMask={true}
+                customStyles={{
+                    wrapper: {
+
+                        backgroundColor: "transparent",
+                    },
+                    draggableIcon: {
+                        backgroundColor: "#FA9A5B",
+
+                    }
+                }}
+            >
+                <View style={styles.container}>
+                    <View style={{ alignItems: 'center' }}>
+
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={imagepick2}   >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Take Picture</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={pickMultiple2}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Choice Here</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </RBSheet>
+            <RBSheet
+                ref={refRBSheet3}
+                closeOnDragDown={true}
+                height={180}
+                closeOnPressMask={true}
+                customStyles={{
+                    wrapper: {
+
+                        backgroundColor: "transparent",
+                    },
+                    draggableIcon: {
+                        backgroundColor: "#FA9A5B",
+
+                    }
+                }}
+            >
+                <View style={styles.container}>
+                    <View style={{ alignItems: 'center' }}>
+
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={imagepick3}   >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Take Picture</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{ backgroundColor: '#FA9A5B', margin: 10, padding: 10, borderRadius: 10, width: '80%', alignItems: 'center' }}
+                            onPress={pickMultiple3}
+                        >
+                            <Text style={{ color: '#fff', fontSize: 20 }}>Choice Here</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </RBSheet>
+
+
+        </SafeAreaView>
+
+    )
+}
+
+const style = StyleSheet.create({
+
+    maincontainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#FA9A5B',
+    },
+    logo: {
+        width: 160,
+        height: 160,
+        borderRadius: 100,
+        // borderWidth: 7,
+        borderColor: '#707070',
+        backgroundColor: '#eee',
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 30
+    }
+})
+
+
+export default CheckList;
